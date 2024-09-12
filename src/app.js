@@ -5,7 +5,8 @@ import session from "express-session"
 import router from "./routes/index.js";
 import passport from "passport";
 import "./strategies/localStrategies.js"
-
+import mongoose from "mongoose";
+import MongoStore from "connect-mongo";
 const app = express();
 const PORT=3000;
 
@@ -18,9 +19,26 @@ app.use(cookieParser());
 app.use(session({
     secret:"verySecret",
     resave:false,
-    saveUninitialized:false
+    saveUninitialized:false,
+    cookie:{
+        maxAge:6000*10
+    },
+    store:MongoStore.create({
+        client:mongoose.connection.getClient()
+    })
 }))
 
+// app.use(session({
+//     secret:"verySecret",
+//     resave:true,
+//     saveUninitialized:true,
+//     cookie:{
+//         maxAge:6000*10
+//     },
+//     store:MongoStore.create({
+//         client:mongoose.connection.getClient()
+//     })
+// }))
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(router)

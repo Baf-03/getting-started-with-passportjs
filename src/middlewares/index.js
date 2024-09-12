@@ -9,9 +9,10 @@ export const validateRequest = (req, res, next) => {
 };
 
 
-export const authMiddleware = (req,res,next)=>{
+export const authMiddleware = (req,res,next)=>{ 
     if(req.isAuthenticated()){
-        next()
+       next()
+       return
     }
     return res.status(401).json({
         msg:"unAuth User",
