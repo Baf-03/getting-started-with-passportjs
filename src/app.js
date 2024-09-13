@@ -4,9 +4,13 @@ import cookieParser from "cookie-parser";
 import session from "express-session"
 import router from "./routes/index.js";
 import passport from "passport";
-import "./strategies/localStrategies.js"
+
+// import "./strategies/localStrategies.js"
+import "./strategies/discord-Strategies.js"
+
 import mongoose from "mongoose";
 import MongoStore from "connect-mongo";
+
 const app = express();
 const PORT=3000;
 
