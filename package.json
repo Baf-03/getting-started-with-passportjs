@@ -5,7 +5,7 @@
   "main": "./src/app.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "echo \"No tests yet\"",
     "dev": "nodemon ./src/app.js"
   },
   "keywords": [],
@@ -22,5 +22,8 @@
     "passport": "^0.7.0",
     "passport-discord": "^0.1.4",
     "passport-local": "^1.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
   }
 }
