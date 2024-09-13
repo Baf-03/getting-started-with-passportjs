@@ -22,6 +22,12 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
+    
+    - name: Set up environment variables
+      run: |
+        echo "CLIENT_ID=${{ secrets.CLIENT_ID }}" >> $GITHUB_ENV
+        echo "CLIENT_SECRET_ID=${{ secrets.CLIENT_SECRET_ID }}" >> $GITHUB_ENV
+    
     - run: npm ci
-    # Removed the build step since it is not required
+    - run: npm run build --if-present
     - run: npm test
